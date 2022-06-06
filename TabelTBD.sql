@@ -125,3 +125,38 @@ INSERT INTO Penyelenggara VALUES(4, "Penyelenggara4", "123456", 2);
 INSERT INTO Penyelenggara VALUES(5, "Penyelenggara5", "12456", 3);
 INSERT INTO Penyelenggara VALUES(6, "Penyelenggara6", "12345", 4);
 INSERT INTO Penyelenggara VALUES(7, "Penyelenggara7", "123456", 5);
+
+INSERT INTO Sertifikat VALUES(1,1,"2021-12-29",1,3,1); 
+INSERT INTO Sertifikat VALUES(2,2,"2022-01-28",1,5,1); 
+INSERT INTO Sertifikat VALUES(3,1,"2021-12-29",1,3,2); 
+INSERT INTO Sertifikat VALUES(4,1,"2022-01-01",2,4,3); 
+INSERT INTO Sertifikat VALUES(5,2,"2022-02-01",2,1,3); 
+INSERT INTO Sertifikat VALUES(6,1,"2022-02-10",1,2,4); 
+INSERT INTO Sertifikat VALUES(7,1,"2021-11-01",1,3,5); 
+INSERT INTO Sertifikat VALUES(8,1,"2022-01-01",2,4,6); 
+INSERT INTO Sertifikat VALUES(9,2,"2022-02-01",2,1,6); 
+INSERT INTO Sertifikat VALUES(10,1,"2022-01-12",1,2,7); 
+INSERT INTO Sertifikat VALUES(11,1,"2022-02-10",1,2,8);
+INSERT INTO Sertifikat VALUES(12,1,"2021-11-01",1,3,9);
+INSERT INTO Sertifikat VALUES(13,2,"2021-12-29",1,3,9); 
+INSERT INTO Sertifikat VALUES(14,1,"2022-01-01",2,4,10); 
+-- belum ada yang Astra, buat booster saja
+
+INSERT INTO KegiatanVaksinasi VALUES(1, 100, '10:30', "2021-11-01",3,1);
+INSERT INTO KegiatanVaksinasi VALUES(2, 150, '13:30', "2021-12-29",3,2);
+INSERT INTO KegiatanVaksinasi VALUES(3, 50, '11:30', "2022-01-01",4,3);
+INSERT INTO KegiatanVaksinasi VALUES(4, 200, '09:00', "2022-01-12",2,4);
+INSERT INTO KegiatanVaksinasi VALUES(5, 120, '07:30', "2022-01-28",5,5);
+INSERT INTO KegiatanVaksinasi VALUES(6, 100, '11:15', "2022-02-01",1,6);
+INSERT INTO KegiatanVaksinasi VALUES(7, 90, '10:00', "2022-02-10",2,7);
+-- yang akan datang belum dibuat
+
+INSERT INTO Memberikan VALUES(1,2);
+INSERT INTO Memberikan VALUES(2,2);
+INSERT INTO Memberikan VALUES(3,1);
+INSERT INTO Memberikan VALUES(4,1);
+INSERT INTO Memberikan VALUES(5,1);
+INSERT INTO Memberikan VALUES(6,2);
+INSERT INTO Memberikan VALUES(7,1);
+
+-- pendaftaran, kesehatan, mengikuti belum ada recordnya
