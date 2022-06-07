@@ -11,16 +11,6 @@ drop table Lokasi
 drop table Kota
 drop table Masyarakat
 
-select * from Pendaftaran
-select * from Sertifikat
-select * from Vaksin
-select * from Tahapan
-select * from KegiatanVaksinasi
-select * from Penyelenggara
-select * from Lokasi
-select * from Kota
-select * from Masyarakat
-
 create table Masyarakat (
 	IdM INT PRIMARY KEY,
 	email VARCHAR(50),
