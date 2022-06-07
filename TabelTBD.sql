@@ -1,3 +1,26 @@
+drop table Memberikan
+drop table Mengikuti
+drop table Kesehatan
+drop table Pendaftaran
+drop table Sertifikat
+drop table Vaksin
+drop table Tahapan
+drop table KegiatanVaksinasi
+drop table Penyelenggara
+drop table Lokasi
+drop table Kota
+drop table Masyarakat
+
+select * from Pendaftaran
+select * from Sertifikat
+select * from Vaksin
+select * from Tahapan
+select * from KegiatanVaksinasi
+select * from Penyelenggara
+select * from Lokasi
+select * from Kota
+select * from Masyarakat
+
 create table Masyarakat (
 	IdM INT PRIMARY KEY,
 	email VARCHAR(50),
@@ -20,6 +43,12 @@ CREATE TABLE Lokasi(
     IdKota INT FOREIGN KEY REFERENCES Kota(IdKota)
 )
 
+CREATE TABLE Penyelenggara(
+    IdPenyelenggara INT PRIMARY KEY,
+    nama VARCHAR(50),
+    urutanTahapan VARCHAR(15)
+)
+
 CREATE TABLE KegiatanVaksinasi(
     IdKegiatan INT PRIMARY KEY,
     kuota INT,
@@ -29,11 +58,7 @@ CREATE TABLE KegiatanVaksinasi(
     IdPenyelenggara INT FOREIGN KEY REFERENCES Penyelenggara(IdPenyelenggara)
 )
 
-CREATE TABLE Penyelenggara(
-    IdPenyelenggara INT PRIMARY KEY,
-    nama VARCHAR(50),
-    urutanTahapan VARCHAR(15)
-)
+
 
 CREATE TABLE Tahapan(
     IdTahapan INT PRIMARY KEY,
@@ -48,7 +73,8 @@ CREATE TABLE Vaksin(
 CREATE TABLE Sertifikat(
     IdSertifikat INT PRIMARY KEY,
     noDosis INT,
-    IdM INT FOREIGN KEY REFERENCES Masyarakat(IdM)
+    IdM INT FOREIGN KEY REFERENCES Masyarakat(IdM),
+	IdKegiatan INT FOREIGN KEY REFERENCES KegiatanVaksinasi(IdKegiatan)
 )
 
 CREATE TABLE Pendaftaran(
@@ -63,13 +89,13 @@ CREATE TABLE Kesehatan(
     IdKesehatan INT PRIMARY KEY,
     komorbid VARCHAR(30),
     suhuTubuh INT,
-    tanggalTerkenaCovid INT,
+    tanggalTerkenaCovid DATE,
     tensi VARCHAR(10),
     IdM INT FOREIGN KEY REFERENCES Masyarakat(IdM)
 )
 
 CREATE TABLE Mengikuti(
-    IdM INT PRIMARY KEY,
+    IdM INT,
     IdKegiatan INT,
     jamAwal TIME,
     jamAkhir TIME,
@@ -81,13 +107,13 @@ CREATE TABLE Memberikan(
     IdVaksin INT
 )
 
-INSERT INTO `Kota` (`IdKota`,`namaKota`)
+INSERT INTO Kota (IdKota,namaKota)
 VALUES
-  (1,"Bengkulu"),
-  (2,"Bandung"),
-  (3,"Jakarta"),
-  (4,"Denpasar"),
-  (5,"Surabaya");
+  (1,'Bengkulu'),
+  (2,'Bandung'),
+  (3,'Jakarta'),
+  (4,'Denpasar'),
+  (5,'Surabaya');
 
 
 insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (1, '77576 Merchant Way', 1);
@@ -306,16 +332,16 @@ INSERT INTO Masyarakat VALUES(199,'Ivy_Eyres511@joiniaa.com','5-070-026-4608','I
 INSERT INTO Masyarakat VALUES(200,'Ema_Emmott2883@deavo.com','6-146-264-7646','Ema Emmott','Linda Lane Route, 1170',439373744,'1996-12-03 20:05:42Z','Female');
 
 
-INSERT INTO Tahapan VALUES(1, "pendaftaran");
-INSERT INTO Tahapan VALUES(2, "konfirmasi penyelenggara");
-INSERT INTO Tahapan VALUES(3, "pendaftaran ulang");
-INSERT INTO Tahapan VALUES(4, "cek kesehatan");
-INSERT INTO Tahapan VALUES(5, "pemberian vaksin");
-INSERT INTO Tahapan VALUES(6, "cetak sertifikat");
+INSERT INTO Tahapan VALUES(1, 'pendaftaran');
+INSERT INTO Tahapan VALUES(2, 'konfirmasi penyelenggara');
+INSERT INTO Tahapan VALUES(3, 'pendaftaran ulang');
+INSERT INTO Tahapan VALUES(4, 'cek kesehatan');
+INSERT INTO Tahapan VALUES(5, 'pemberian vaksin');
+INSERT INTO Tahapan VALUES(6, 'cetak sertifikat');
 
-INSERT INTO Vaksin VALUES(1, "Sinovac");
-INSERT INTO Vaksin VALUES(2, "Pfizer");
-INSERT INTO Vaksin VALUES(3, "Moderna");
+INSERT INTO Vaksin VALUES(1, 'Sinovac');
+INSERT INTO Vaksin VALUES(2, 'Pfizer');
+INSERT INTO Vaksin VALUES(3, 'Moderna');
 
 insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (1, 'Dabfeed', '123456');
 insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (2, 'Kazio', '123456');
@@ -329,26 +355,26 @@ insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (9, 'Zoo
 insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (10, 'Zoomzone', '12456');
 
 
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (1, 50, '9:00', '2021-10-25', 1, 1);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (2, 50, '9:00', '2021-11-27', 1, 1);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (3, 50, '9:00', '2021-10-02', 2, 2);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (4, 50, '9:00', '2021-11-18', 2, 2);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (5, 50, '9:00', '2021-10-12', 3, 3);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (6, 50, '9:00', '2021-11-11', 3, 3);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (7, 50, '9:00', '2021-10-25', 4, 4);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (8, 50, '9:00', '2021-11-27', 4, 4);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (9, 50, '9:00', '2021-10-30', 5, 5);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (10, 50, '9:00', '2021-11-29', 5, 5);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (11, 50, '9:00', '2021-10-18', 6, 6);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (12, 50, '9:00', '2021-11-30', 6, 6);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (13, 50, '9:00', '2021-10-28', 7, 7);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (14, 50, '9:00', '2021-11-24', 7, 7);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (15, 50, '9:00', '2021-10-30', 8, 8);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (16, 50, '9:00', '2021-11-03', 8, 8);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (17, 50, '9:00', '2021-10-27', 9, 9);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (18, 50, '9:00', '2021-11-01', 9, 9);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (19, 50, '9:00', '2021-10-25', 10, 10);
-insert into Kegiatan (IDKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (20, 50, '9:00', '2021-11-18', 10, 10);
+insert into KegiatanVaksinasi(IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (1, 50, '9:00', '2021-10-25', 1, 1);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (2, 50, '9:00', '2021-11-27', 1, 1);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (3, 50, '9:00', '2021-10-02', 2, 2);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (4, 50, '9:00', '2021-11-18', 2, 2);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (5, 50, '9:00', '2021-10-12', 3, 3);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (6, 50, '9:00', '2021-11-11', 3, 3);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (7, 50, '9:00', '2021-10-25', 4, 4);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (8, 50, '9:00', '2021-11-27', 4, 4);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (9, 50, '9:00', '2021-10-30', 5, 5);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (10, 50, '9:00', '2021-11-29', 5, 5);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (11, 50, '9:00', '2021-10-18', 6, 6);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (12, 50, '9:00', '2021-11-30', 6, 6);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (13, 50, '9:00', '2021-10-28', 7, 7);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (14, 50, '9:00', '2021-11-24', 7, 7);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (15, 50, '9:00', '2021-10-30', 8, 8);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (16, 50, '9:00', '2021-11-03', 8, 8);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (17, 50, '9:00', '2021-10-27', 9, 9);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (18, 50, '9:00', '2021-11-01', 9, 9);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (19, 50, '9:00', '2021-10-25', 10, 10);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (20, 50, '9:00', '2021-11-18', 10, 10);
 
 -- belum ada yang Astra, buat booster saja
 insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (1, 1, 1, 1);
