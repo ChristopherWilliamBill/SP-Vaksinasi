@@ -22,9 +22,15 @@ create table Masyarakat (
 	jenisKelamin VARCHAR(50)
 );
 
+CREATE TABLE Provinsi(
+    IdProvinsi INT PRIMARY KEY,
+    namaProvinsi VARCHAR(50)
+)
+
 CREATE TABLE Kota(
     IdKota INT PRIMARY KEY,
-    namaKota VARCHAR(50)
+    namaKota VARCHAR(50),
+    IdProvinsi INT FOREIGN KEY REFERENCES Provinsi(IdProvinsi)
 )
 
 CREATE TABLE Lokasi(
@@ -32,6 +38,8 @@ CREATE TABLE Lokasi(
     namaLokasi VARCHAR(50),
     IdKota INT FOREIGN KEY REFERENCES Kota(IdKota)
 )
+
+
 
 CREATE TABLE Penyelenggara(
     IdPenyelenggara INT PRIMARY KEY,
@@ -97,27 +105,20 @@ CREATE TABLE Memberikan(
     IdVaksin INT
 )
 
-INSERT INTO Kota (IdKota,namaKota)
+
+INSERT INTO PROVINSI VALUES (1,'Jawa Barat');
+
+INSERT INTO Kota (IdKota,namaKota,IdProvinsi)
 VALUES
-  (1,'Bengkulu'),
-  (2,'Bandung'),
-  (3,'Jakarta'),
-  (4,'Denpasar'),
-  (5,'Surabaya');
+  (1,'Cirebon',1),
+  (2,'Bandung',1);
 
 
 insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (1, '77576 Merchant Way', 1);
-insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (2, '8 Morning Junction', 2);
-insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (3, '485 Bartelt Way', 3);
-insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (4, '71927 Sloan Circle', 4);
-insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (5, '20584 Maywood Lane', 5);
+insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (2, '8 Morning Junction', 1);
+insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (3, '485 Bartelt Way', 2);
+insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (4, '71927 Sloan Circle', 2);
 
-
-insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (6, '85253 Mccormick Hill', 1);
-insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (7, '1 Transport Drive', 2);
-insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (8, '812 Rowland Avenue', 3);
-insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (9, '1553 Petterle Road', 4);
-insert into Lokasi (IdLokasi, namaLokasi, IdKota) values (10, '7 Oxford Road', 5);
 
 
 INSERT INTO Masyarakat VALUES(1,'Alexander_Coleman4308@cispeto.com','3-863-755-8817','Alexander Coleman','Baltic  Avenue, 9875',1652048539,'1995-08-26 20:12:38Z','Male');
@@ -195,131 +196,8 @@ INSERT INTO Masyarakat VALUES(72,'Lynn_Redwood9703@acrit.org','2-863-480-5246','
 INSERT INTO Masyarakat VALUES(73,'Jaylene_Fields5897@sveldo.biz','1-232-704-1478','Jaylene Fields','Jackson Rue, 3544',254887669,'1981-03-22 08:32:21Z','Female');
 INSERT INTO Masyarakat VALUES(74,'Olivia_Freeburn1202@atink.com','3-885-684-0225','Olivia Freeburn','Thrale   Boulevard, 4847',1276513120,'1986-11-09 12:00:53Z','Female');
 INSERT INTO Masyarakat VALUES(75,'Tom_Thompson3262@bretoux.com','2-684-846-2030','Tom Thompson','Bolton  Way, 7970',229826103,'1988-01-29 21:27:02Z','Male');
-INSERT INTO Masyarakat VALUES(76,'Bart_Duvall9623@naiker.biz','5-651-731-5241','Bart Duvall','Arundel   Way, 2457',399291800,'1997-12-31 11:13:02Z','Male');
-INSERT INTO Masyarakat VALUES(77,'Eduardo_Watson61@womeona.net','2-460-016-0637','Eduardo Watson','Yoakley Road, 2127',2137787909,'1998-02-11 19:17:20Z','Male');
-INSERT INTO Masyarakat VALUES(78,'Nicholas_Booth2294@gmail.com','7-705-854-5648','Nicholas Booth','Castile  Hill, 2981',1638632522,'1989-11-24 11:55:51Z','Male');
-INSERT INTO Masyarakat VALUES(79,'Peter_Chadwick452@joiniaa.com','8-572-602-4613','Peter Chadwick','Victoria  Route, 7135',628555464,'1985-12-21 12:19:39Z','Male');
-INSERT INTO Masyarakat VALUES(80,'Jaylene_Roberts1070@eirey.tech','3-331-537-8200','Jaylene Roberts','Blendon    Boulevard, 213',1000534934,'1994-03-13 01:49:05Z','Female');
-INSERT INTO Masyarakat VALUES(81,'Carl_Boden1646@bauros.biz','1-138-055-6025','Carl Boden','Ensign   Tunnel, 847',280855830,'1992-10-22 15:08:42Z','Male');
-INSERT INTO Masyarakat VALUES(82,'Maxwell_Thorpe1297@gmail.com','2-482-411-1431','Maxwell Thorpe','Union  Drive, 1712',1380357210,'1987-10-21 20:18:40Z','Male');
-INSERT INTO Masyarakat VALUES(83,'Rosa_Bingham2258@gembat.biz','1-844-107-2571','Rosa Bingham','Ely  Avenue, 5734',1910567381,'1989-10-16 16:47:39Z','Female');
-INSERT INTO Masyarakat VALUES(84,'Danny_Horton3550@bretoux.com','6-752-536-6022','Danny Horton','Mariner  Rue, 3296',1286887792,'1987-07-08 04:21:21Z','Male');
-INSERT INTO Masyarakat VALUES(85,'Faith_Selby5809@elnee.tech','0-004-030-1131','Faith Selby','Chestnut Rise Road, 353',1365755359,'1988-11-30 01:24:14Z','Female');
-INSERT INTO Masyarakat VALUES(86,'Lynn_Rixon2677@ubusive.com','8-351-621-0743','Lynn Rixon','Mariner  Vale, 469',177220658,'1984-08-02 11:32:55Z','Female');
-INSERT INTO Masyarakat VALUES(87,'Crystal_Middleton63@sheye.org','4-046-505-7200','Crystal Middleton','Camelot   Drive, 4610',1975207565,'2000-02-10 04:12:29Z','Female');
-INSERT INTO Masyarakat VALUES(88,'Carolyn_Jones3246@nickia.com','2-448-170-5312','Carolyn Jones','Liverpool  Boulevard, 1740',1039667153,'1997-05-09 19:53:00Z','Female');
-INSERT INTO Masyarakat VALUES(89,'Rufus_Niles8596@twipet.com','8-870-055-1024','Rufus Niles','Dutton   Walk, 360',1620705305,'1981-08-16 19:36:17Z','Male');
-INSERT INTO Masyarakat VALUES(90,'Holly_Yarlett9783@sveldo.biz','8-034-873-6627','Holly Yarlett','Waite  Hill, 3839',889990158,'1993-03-24 11:17:51Z','Female');
-INSERT INTO Masyarakat VALUES(91,'Lynn_Radcliffe7690@naiker.biz','8-870-808-7804','Lynn Radcliffe','Beaumont  Rue, 1420',1088497048,'1983-05-18 08:06:47Z','Female');
-INSERT INTO Masyarakat VALUES(92,'Mark_Plant7100@atink.com','7-410-281-5688','Mark Plant','Canning  Way, 7622',1855665070,'1997-02-20 07:35:18Z','Male');
-INSERT INTO Masyarakat VALUES(93,'Hayden_Redwood3766@hourpy.biz','4-802-855-0804','Hayden Redwood','Apollo  Crossroad, 6454',1807132567,'1987-03-05 16:58:11Z','Female');
-INSERT INTO Masyarakat VALUES(94,'Lily_White6636@vetan.org','4-685-703-7178','Lily White','Berriman  Tunnel, 7939',1494722821,'1985-07-07 12:39:39Z','Female');
-INSERT INTO Masyarakat VALUES(95,'Peter_Wilkinson1576@brety.org','5-787-265-3638','Peter Wilkinson','Battis   Grove, 1168',2082140362,'1983-08-23 00:38:47Z','Male');
-INSERT INTO Masyarakat VALUES(96,'Elise_Clifford8904@bretoux.com','0-060-506-6812','Elise Clifford','Blackheath   Drive, 9007',1863773857,'1988-07-28 16:32:26Z','Female');
-INSERT INTO Masyarakat VALUES(97,'David_Cameron6356@elnee.tech','0-718-415-0425','David Cameron','Chester      Boulevard, 1317',1561696744,'1984-07-26 22:29:53Z','Male');
-INSERT INTO Masyarakat VALUES(98,'Agnes_Riley6812@sheye.org','4-864-784-0542','Agnes Riley','Caroline  Walk, 4232',1974012551,'1993-11-21 08:29:36Z','Female');
-INSERT INTO Masyarakat VALUES(99,'Domenic_Woods1728@atink.com','4-557-600-4201','Domenic Woods','Armory  Hill, 6670',1321905783,'1981-09-24 19:39:35Z','Male');
-INSERT INTO Masyarakat VALUES(100,'Sonya_Lloyd8254@deons.tech','3-411-204-5322','Sonya Lloyd','Monroe Vale, 9683',1030110926,'1984-05-28 03:31:24Z','Female');
-INSERT INTO Masyarakat VALUES(101,'Sienna_Whatson2356@kideod.biz','5-671-424-7724','Sienna Whatson','Littlebury  Boulevard, 9643',191881589,'1994-10-11 06:09:20Z','Female');
-INSERT INTO Masyarakat VALUES(102,'Danny_Mooney756@typill.biz','4-658-256-8653','Danny Mooney','Victoria  Grove, 8469',2062275137,'1995-05-27 01:22:39Z','Male');
-INSERT INTO Masyarakat VALUES(103,'Rocco_Saunders5026@atink.com','5-541-280-6305','Rocco Saunders','Blandford  Crossroad, 5334',595701243,'1996-08-27 00:35:19Z','Male');
-INSERT INTO Masyarakat VALUES(104,'Melanie_Ellis3152@acrit.org','0-200-451-1768','Melanie Ellis','Hamilton  Walk, 4076',645096560,'1987-04-03 21:04:46Z','Female');
-INSERT INTO Masyarakat VALUES(105,'Jocelyn_Thomson9455@gembat.biz','2-128-063-1715','Jocelyn Thomson','Kinglake  Rue, 8076',1263001818,'1989-10-10 16:03:49Z','Female');
-INSERT INTO Masyarakat VALUES(106,'Sebastian_Patel6371@tonsy.org','1-647-474-0723','Sebastian Patel','Blandford  Street, 7073',96680972,'1992-01-15 00:57:12Z','Male');
-INSERT INTO Masyarakat VALUES(107,'Barry_Wright3747@extex.org','1-181-500-5688','Barry Wright','Chancellor  Boulevard, 3115',1455993250,'1982-07-23 20:50:31Z','Male');
-INSERT INTO Masyarakat VALUES(108,'Marjorie_Watt8923@gembat.biz','5-284-784-1726','Marjorie Watt','Gautrey  Lane, 2351',1622450765,'1988-07-28 06:25:43Z','Female');
-INSERT INTO Masyarakat VALUES(109,'Boris_Jackson8872@extex.org','3-363-357-0806','Boris Jackson','Dutton   Alley, 9109',2053453916,'1990-03-27 15:25:58Z','Male');
-INSERT INTO Masyarakat VALUES(110,'Grace_Fleming2970@gompie.com','2-058-475-0435','Grace Fleming','Battis   Pass, 4718',667941409,'1998-07-03 09:00:11Z','Female');
-INSERT INTO Masyarakat VALUES(111,'Rihanna_Donnelly6997@corti.com','0-262-346-3704','Rihanna Donnelly','Birkbeck  Street, 4746',1708901979,'1983-07-20 21:31:28Z','Female');
-INSERT INTO Masyarakat VALUES(112,'Celia_Exton3014@deavo.com','1-837-115-8334','Celia Exton','Ben   Walk, 1544',79038451,'1997-02-08 07:55:23Z','Female');
-INSERT INTO Masyarakat VALUES(113,'Bristol_Leigh9929@ubusive.com','4-601-612-3514','Bristol Leigh','East Way, 6179',98974833,'1999-09-28 06:45:06Z','Female');
-INSERT INTO Masyarakat VALUES(114,'Penelope_Gavin5264@muall.tech','3-851-003-3463','Penelope Gavin','Magnolia Rue, 6715',1722303942,'1984-09-05 12:14:58Z','Female');
-INSERT INTO Masyarakat VALUES(115,'Cadence_Hamilton4448@tonsy.org','3-332-032-4521','Cadence Hamilton','Balfour    Street, 5760',1797530295,'1981-07-12 19:09:51Z','Female');
-INSERT INTO Masyarakat VALUES(116,'Rick_Forth9073@kideod.biz','6-730-165-1855','Rick Forth','Linda Lane Alley, 3780',1303557459,'1983-04-15 00:06:20Z','Male');
-INSERT INTO Masyarakat VALUES(117,'Carmen_Aldridge8206@joiniaa.com','5-448-663-4734','Carmen Aldridge','Ensign   Grove, 4638',879742296,'1991-05-18 14:15:56Z','Female');
-INSERT INTO Masyarakat VALUES(118,'Abdul_Stone4816@gmail.com','3-468-831-5541','Abdul Stone','Camberwell  Street, 2087',353362942,'1984-12-08 11:13:57Z','Male');
-INSERT INTO Masyarakat VALUES(119,'Naomi_Griffiths7552@kideod.biz','7-062-386-8532','Naomi Griffiths','Carnegie   Way, 8810',2073183289,'1986-04-09 07:47:00Z','Female');
-INSERT INTO Masyarakat VALUES(120,'Chad_Brett1303@gmail.com','5-475-177-8412','Chad Brett','Gautrey  Boulevard, 2682',978604081,'1989-03-08 05:36:49Z','Male');
-INSERT INTO Masyarakat VALUES(121,'Isabella_Watt9377@vetan.org','8-753-030-5773','Isabella Watt','Boleyn  Route, 4362',888236434,'1988-05-03 13:09:41Z','Female');
-INSERT INTO Masyarakat VALUES(122,'Angela_Ryan4717@ovock.tech','1-715-661-7820','Angela Ryan','Central  Way, 3503',434315575,'1986-02-28 21:28:26Z','Female');
-INSERT INTO Masyarakat VALUES(123,'Felicity_Butler2445@nanoff.biz','0-651-782-1384','Felicity Butler','Fairbairn  Road, 1242',1866453292,'1984-03-04 02:25:11Z','Female');
-INSERT INTO Masyarakat VALUES(124,'Stella_Clarke9089@kideod.biz','7-402-425-8368','Stella Clarke','Magnolia Rue, 1508',1402601157,'1995-12-05 01:12:21Z','Female');
-INSERT INTO Masyarakat VALUES(125,'Daniel_Jones3257@extex.org','3-386-008-6683','Daniel Jones','Camley   Crossroad, 9396',615994699,'1998-08-02 19:37:25Z','Male');
-INSERT INTO Masyarakat VALUES(126,'Jack_Wright8483@naiker.biz','0-645-881-6207','Jack Wright','Mariner  Boulevard, 3634',800183908,'1981-05-27 18:52:12Z','Male');
-INSERT INTO Masyarakat VALUES(127,'Wade_Skinner6491@ubusive.com','5-281-381-1782','Wade Skinner','Vintners  Alley, 8103',18869507,'1984-12-16 08:32:50Z','Male');
-INSERT INTO Masyarakat VALUES(128,'Maya_Wilson7990@twace.org','7-407-174-7226','Maya Wilson','Chestnut Rise Way, 9750',1837724602,'1994-09-24 11:25:24Z','Female');
-INSERT INTO Masyarakat VALUES(129,'Matthew_Pierce2142@brety.org','2-637-010-1043','Matthew Pierce','King Tunnel, 6981',1931040449,'1997-06-10 15:44:29Z','Male');
-INSERT INTO Masyarakat VALUES(130,'Mike_Fox7068@twace.org','6-074-404-7181','Mike Fox','Caedmon  Road, 2394',1755839693,'1993-04-26 01:33:27Z','Male');
-INSERT INTO Masyarakat VALUES(131,'Leroy_Roscoe3161@kideod.biz','8-858-641-6530','Leroy Roscoe','Sheffield Way, 4982',1271017666,'1998-10-03 05:06:45Z','Male');
-INSERT INTO Masyarakat VALUES(132,'Mason_Payne3235@nickia.com','8-108-443-4050','Mason Payne','Fairholt   Drive, 4109',1115117994,'1981-04-22 07:20:52Z','Male');
-INSERT INTO Masyarakat VALUES(133,'Leanne_Glass635@hourpy.biz','3-183-524-2172','Leanne Glass','Maple Walk, 1578',292004427,'1993-06-29 14:35:51Z','Female');
-INSERT INTO Masyarakat VALUES(134,'Zara_Graham2824@guentu.biz','4-251-141-0103','Zara Graham','Argyle  Vale, 3925',1319370495,'1992-09-15 15:44:35Z','Female');
-INSERT INTO Masyarakat VALUES(135,'George_Nicholls300@cispeto.com','7-716-713-6418','George Nicholls','Blandford  Alley, 31',1435954189,'1982-04-28 22:38:04Z','Male');
-INSERT INTO Masyarakat VALUES(136,'Jamie_Johnson4857@nimogy.biz','3-400-781-5535','Jamie Johnson','Sherwood  Tunnel, 2974',196863879,'1998-05-27 16:39:13Z','Female');
-INSERT INTO Masyarakat VALUES(137,'Ryan_Osman2700@atink.com','0-804-235-6045','Ryan Osman','Camdale  Way, 6105',1642643455,'1996-01-28 06:25:36Z','Male');
-INSERT INTO Masyarakat VALUES(138,'Winnie_Stone 1741@iatim.tech','4-780-876-7870','Winnie Stone ','Dutton   Alley, 4046',2068858027,'1980-06-27 05:12:49Z','Female');
-INSERT INTO Masyarakat VALUES(139,'Gil_Hewitt9954@nimogy.biz','4-115-825-8764','Gil Hewitt','Mariner  Rue, 1134',685132925,'1998-09-09 11:44:45Z','Male');
-INSERT INTO Masyarakat VALUES(140,'Sharon_Wade5874@nimogy.biz','8-448-046-8245','Sharon Wade','Fawn Tunnel, 8999',1040200771,'1989-06-08 02:11:40Z','Female');
-INSERT INTO Masyarakat VALUES(141,'Bob_Forth1508@ubusive.com','0-226-821-4707','Bob Forth','Endsleigh  Road, 8147',1642943089,'1995-12-21 15:21:36Z','Male');
-INSERT INTO Masyarakat VALUES(142,'Sebastian_Hunt2582@sheye.org','5-020-333-3501','Sebastian Hunt','Norland  Street, 4022',1573465609,'1990-10-25 01:22:48Z','Male');
-INSERT INTO Masyarakat VALUES(143,'Barney_Martin4599@brety.org','6-140-074-0022','Barney Martin','Angrave    Grove, 5416',656319809,'1988-08-30 15:23:47Z','Male');
-INSERT INTO Masyarakat VALUES(144,'Rosalyn_Bishop3432@womeona.net','1-705-355-7351','Rosalyn Bishop','Littlebury  Tunnel, 5606',1731008810,'1994-03-18 09:11:07Z','Female');
-INSERT INTO Masyarakat VALUES(145,'Benjamin_Wilcox1289@twipet.com','6-653-311-1578','Benjamin Wilcox','Thorndike   Grove, 6404',619102767,'1992-04-21 21:06:51Z','Male');
-INSERT INTO Masyarakat VALUES(146,'Havana_Walton6155@supunk.biz','7-272-750-8257','Havana Walton','Blore  Avenue, 9349',1191338825,'2000-04-26 17:39:42Z','Female');
-INSERT INTO Masyarakat VALUES(147,'Doug_Mcneill4171@kideod.biz','7-485-727-8848','Doug Mcneill','Anns  Crossroad, 7978',1579298056,'1998-05-19 12:11:58Z','Male');
-INSERT INTO Masyarakat VALUES(148,'Jack_Dickson4342@corti.com','6-613-186-3780','Jack Dickson','Cavaye  Tunnel, 4837',1406246754,'1980-07-29 02:29:23Z','Male');
-INSERT INTO Masyarakat VALUES(149,'Jolene_Addis4570@acrit.org','6-655-833-4104','Jolene Addis','Calverley  Way, 8550',842043227,'1985-08-02 22:58:47Z','Female');
-INSERT INTO Masyarakat VALUES(150,'Adela_Hunter6528@hourpy.biz','4-868-778-5031','Adela Hunter','Queensberry  Crossroad, 9394',810707321,'1994-09-03 13:06:24Z','Female');
-INSERT INTO Masyarakat VALUES(151,'Aiden_Collins7967@liret.org','5-802-430-8643','Aiden Collins','Castle Hill, 2747',1527247745,'1993-04-11 01:35:24Z','Male');
-INSERT INTO Masyarakat VALUES(152,'Carl_Lindsay1869@corti.com','2-127-582-8627','Carl Lindsay','Chart   Route, 4567',2108738347,'1982-05-15 05:06:28Z','Male');
-INSERT INTO Masyarakat VALUES(153,'Rosalee_Ring1200@nanoff.biz','1-813-047-7622','Rosalee Ring','Commercial  Alley, 1621',1070980012,'1982-08-14 13:50:02Z','Female');
-INSERT INTO Masyarakat VALUES(154,'Mason_Briggs4028@acrit.org','8-058-323-1630','Mason Briggs','Sheringham   Way, 6098',618502245,'1999-12-12 22:38:09Z','Male');
-INSERT INTO Masyarakat VALUES(155,'Chester_Jarrett9795@deons.tech','4-176-346-7814','Chester Jarrett','Tilloch   Lane, 3972',2023437765,'1997-10-25 13:22:45Z','Male');
-INSERT INTO Masyarakat VALUES(156,'Eileen_Vangness3300@kideod.biz','7-085-060-5870','Eileen Vangness','Castle Avenue, 3209',290380364,'1986-07-11 06:37:23Z','Female');
-INSERT INTO Masyarakat VALUES(157,'Rhea_Newton949@bulaffy.com','6-614-058-4244','Rhea Newton','Camden  Street, 9747',1155331041,'1989-04-06 16:58:34Z','Female');
-INSERT INTO Masyarakat VALUES(158,'Rhea_Rowlands9140@twace.org','6-271-766-8628','Rhea Rowlands','Gathorne   Road, 8154',1605971723,'1984-09-26 02:16:47Z','Female');
-INSERT INTO Masyarakat VALUES(159,'Aurelia_Aldridge9421@sheye.org','8-061-566-2332','Aurelia Aldridge','Catherine  Boulevard, 4412',535937078,'1995-07-12 20:29:43Z','Female');
-INSERT INTO Masyarakat VALUES(160,'Owen_Shaw3267@brety.org','1-725-555-8376','Owen Shaw','Bolingbroke  Pass, 732',956731222,'1985-11-12 14:38:27Z','Male');
-INSERT INTO Masyarakat VALUES(161,'Mike_Wilcox552@vetan.org','5-584-128-3348','Mike Wilcox','Thorndike   Rue, 8080',666494899,'1991-10-23 03:57:37Z','Male');
-INSERT INTO Masyarakat VALUES(162,'Carl_Richards1745@gembat.biz','8-862-538-1880','Carl Richards','Aspen Grove, 1477',1121334905,'1995-12-23 16:19:37Z','Male');
-INSERT INTO Masyarakat VALUES(163,'Nicole_Dempsey7842@kideod.biz','0-718-841-6223','Nicole Dempsey','Clarks  Road, 8437',2026647477,'1998-10-25 05:43:51Z','Female');
-INSERT INTO Masyarakat VALUES(164,'Danny_Mitchell1557@twipet.com','8-774-381-8745','Danny Mitchell','Berry  Street, 374',1278947954,'1998-11-08 22:12:49Z','Male');
-INSERT INTO Masyarakat VALUES(165,'Caydence_Palmer5718@bauros.biz','5-181-520-0686','Caydence Palmer','Gate   Tunnel, 8567',1421116802,'1984-02-22 06:10:17Z','Female');
-INSERT INTO Masyarakat VALUES(166,'Kate_Connor4670@nimogy.biz','7-480-622-2676','Kate Connor','Elizabeth  Pass, 2559',1651438024,'1991-09-29 16:30:05Z','Female');
-INSERT INTO Masyarakat VALUES(167,'Olivia_Stone 5026@ovock.tech','2-410-554-4467','Olivia Stone ','Heritage Road, 9851',765435143,'1989-04-07 02:28:04Z','Female');
-INSERT INTO Masyarakat VALUES(168,'Caleb_Callan652@bungar.biz','3-457-111-4037','Caleb Callan','Railroad Vale, 1691',1710543965,'1986-03-13 15:16:30Z','Male');
-INSERT INTO Masyarakat VALUES(169,'Johnathan_Andersson4485@liret.org','4-228-875-1110','Johnathan Andersson','Bennett  Rue, 3485',926808840,'1993-11-12 12:57:34Z','Male');
-INSERT INTO Masyarakat VALUES(170,'Chuck_Talbot8674@jiman.org','3-235-368-1568','Chuck Talbot','Bennett  Hill, 1123',801165618,'1985-07-16 22:58:58Z','Male');
-INSERT INTO Masyarakat VALUES(171,'Eileen_Walker9565@brety.org','8-685-748-3554','Eileen Walker','Oxford Avenue, 7825',1195021286,'1983-03-09 16:07:40Z','Female');
-INSERT INTO Masyarakat VALUES(172,'Ronald_Norris9506@gompie.com','3-826-732-4830','Ronald Norris','Abbey   Hill, 7025',1748707552,'1981-02-12 10:51:29Z','Male');
-INSERT INTO Masyarakat VALUES(173,'Melinda_Watson5546@infotech44.tech','6-722-887-0044','Melinda Watson','Hickory   Rue, 8095',1616646388,'1985-03-07 16:33:23Z','Female');
-INSERT INTO Masyarakat VALUES(174,'Chester_Simmons4949@mafthy.com','3-137-477-6714','Chester Simmons','Catherine  Vale, 9798',1304810552,'1983-01-29 22:29:11Z','Male');
-INSERT INTO Masyarakat VALUES(175,'Gladys_Milner2538@qater.org','3-871-753-6657','Gladys Milner','Cavendish Vale, 5756',802077189,'1994-08-25 18:51:39Z','Female');
-INSERT INTO Masyarakat VALUES(176,'Harry_Cooper94@bretoux.com','1-517-140-0008','Harry Cooper','Wake  Rue, 9541',918194735,'1981-12-15 06:22:22Z','Male');
-INSERT INTO Masyarakat VALUES(177,'Alexander_Ward5687@infotech44.tech','5-834-573-7758','Alexander Ward','Meadow Drive, 5912',2034173617,'1995-12-31 09:07:28Z','Male');
-INSERT INTO Masyarakat VALUES(178,'Chester_Preston1006@muall.tech','8-114-626-5745','Chester Preston','Blue Anchor  Hill, 3611',1524927631,'1992-06-29 04:50:17Z','Male');
-INSERT INTO Masyarakat VALUES(179,'Bryon_Veale3350@sheye.org','1-638-240-2765','Bryon Veale','Elystan  Boulevard, 1159',1429197376,'1983-12-19 12:07:05Z','Male');
-INSERT INTO Masyarakat VALUES(180,'Alex_Stewart2009@dionrab.com','4-253-753-7645','Alex Stewart','Tilloch   Pass, 5767',2098936033,'1992-05-20 09:42:35Z','Female');
-INSERT INTO Masyarakat VALUES(181,'Candace_Collingwood9574@corti.com','2-168-538-2761','Candace Collingwood','Anns  Crossroad, 664',1729766410,'1983-12-09 06:36:37Z','Female');
-INSERT INTO Masyarakat VALUES(182,'Morgan_Cameron665@qater.org','6-014-565-6843','Morgan Cameron','Timothy  Drive, 435',1973460959,'1993-10-16 01:55:51Z','Female');
-INSERT INTO Masyarakat VALUES(183,'Luna_Greenwood4079@womeona.net','1-202-545-5082','Luna Greenwood','Bethwin  Pass, 2020',2058201055,'1992-06-08 16:53:33Z','Female');
-INSERT INTO Masyarakat VALUES(184,'Johnny_Stark5622@famism.biz','7-761-513-6843','Johnny Stark','Beechen  Grove, 3444',18307301,'1994-06-23 01:54:04Z','Male');
-INSERT INTO Masyarakat VALUES(185,'Bryon_Thorne8236@eirey.tech','4-505-076-4175','Bryon Thorne','Bliss  Grove, 4162',430937899,'1997-06-02 00:44:43Z','Male');
-INSERT INTO Masyarakat VALUES(186,'Jayden_Garner5827@twace.org','3-346-141-7814','Jayden Garner','Cheltenham  Street, 9174',787316355,'1995-01-31 21:14:32Z','Male');
-INSERT INTO Masyarakat VALUES(187,'Catherine_Mccormick2825@bungar.biz','7-581-110-4353','Catherine Mccormick','Balham   Pass, 235',1464562727,'1990-07-06 02:26:17Z','Female');
-INSERT INTO Masyarakat VALUES(188,'Ema_Hooper1048@guentu.biz','1-002-368-1728','Ema Hooper','Queensberry  Rue, 8396',196499725,'1989-03-11 19:43:15Z','Female');
-INSERT INTO Masyarakat VALUES(189,'Celina_Durrant2309@qater.org','5-110-406-8281','Celina Durrant','Pine Tunnel, 386',226209359,'1990-12-12 22:54:41Z','Female');
-INSERT INTO Masyarakat VALUES(190,'Isabel_Uttridge3796@hourpy.biz','5-058-387-6365','Isabel Uttridge','Bingham   Street, 3870',1483061377,'1983-10-21 05:21:52Z','Female');
-INSERT INTO Masyarakat VALUES(191,'Logan_Knight3695@nimogy.biz','4-247-415-7178','Logan Knight','Oxford Drive, 9539',67167754,'1987-07-12 06:52:15Z','Male');
-INSERT INTO Masyarakat VALUES(192,'Mike_Butler4003@eirey.tech','1-065-403-1176','Mike Butler','Sundown Drive, 8948',900207271,'1980-06-02 19:02:33Z','Male');
-INSERT INTO Masyarakat VALUES(193,'Elisabeth_York9185@gmail.com','0-630-766-0530','Elisabeth York','Woodland Street, 6919',498775376,'1990-07-17 21:45:09Z','Female');
-INSERT INTO Masyarakat VALUES(194,'Bryon_Owen6883@ubusive.com','0-688-276-7233','Bryon Owen','Timber   Vale, 3799',2081412780,'2000-01-21 04:23:32Z','Male');
-INSERT INTO Masyarakat VALUES(195,'Esmeralda_Vince8040@bulaffy.com','0-425-366-6670','Esmeralda Vince','Berry  Alley, 3373',1136783041,'1988-12-19 00:53:16Z','Female');
-INSERT INTO Masyarakat VALUES(196,'Mike_Antcliff1245@jiman.org','7-841-133-1013','Mike Antcliff','Camelot   Vale, 9418',674501762,'1993-12-15 04:25:32Z','Male');
-INSERT INTO Masyarakat VALUES(197,'Maddison_Mccall725@famism.biz','1-603-320-1347','Maddison Mccall','Fieldstone Hill, 5574',1089505201,'1992-07-25 14:01:10Z','Female');
-INSERT INTO Masyarakat VALUES(198,'Hannah_Cobb5945@brety.org','3-370-068-3105','Hannah Cobb','Gate   Pass, 7386',249797822,'1987-03-30 07:44:26Z','Female');
-INSERT INTO Masyarakat VALUES(199,'Ivy_Eyres511@joiniaa.com','5-070-026-4608','Ivy Eyres','Meadow Road, 3344',519739256,'1998-03-05 19:21:30Z','Female');
-INSERT INTO Masyarakat VALUES(200,'Ema_Emmott2883@deavo.com','6-146-264-7646','Ema Emmott','Linda Lane Route, 1170',439373744,'1996-12-03 20:05:42Z','Female');
+
+--10 vaksin 3, 20 vaksin 2, 20 vaksin 1, 15 ditolak, 10 baru daftar
 
 
 INSERT INTO Tahapan VALUES(1, 'pendaftaran');
@@ -334,426 +212,261 @@ INSERT INTO Vaksin VALUES(2, 'Pfizer');
 INSERT INTO Vaksin VALUES(3, 'Moderna');
 
 insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (1, 'Dabfeed', '123456');
-insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (2, 'Kazio', '123456');
-insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (3, 'Chatterbridge', '123456');
-insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (4, 'Dazzlesphere', '123456');
-insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (5, 'DabZ', '123456');
-insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (6, 'Devshare', '12345');
-insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (7, 'Twinte', '12345');
-insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (8, 'Teklist', '12345');
-insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (9, 'Zoomlounge', '12345');
-insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (10, 'Zoomzone', '12456');
+insert into Penyelenggara (IdPenyelenggara, nama, urutanTahapan) values (2, 'Kazio', '12345');
 
 
-insert into KegiatanVaksinasi(IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (1, 50, '9:00', '2021-10-25', 1, 1);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (2, 50, '9:00', '2021-11-27', 1, 1);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (3, 50, '9:00', '2021-10-02', 2, 2);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (4, 50, '9:00', '2021-11-18', 2, 2);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (5, 50, '9:00', '2021-10-12', 3, 3);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (6, 50, '9:00', '2021-11-11', 3, 3);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (7, 50, '9:00', '2021-10-25', 4, 4);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (8, 50, '9:00', '2021-11-27', 4, 4);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (9, 50, '9:00', '2021-10-30', 5, 5);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (10, 50, '9:00', '2021-11-29', 5, 5);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (11, 50, '9:00', '2021-10-18', 6, 6);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (12, 50, '9:00', '2021-11-30', 6, 6);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (13, 50, '9:00', '2021-10-28', 7, 7);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (14, 50, '9:00', '2021-11-24', 7, 7);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (15, 50, '9:00', '2021-10-30', 8, 8);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (16, 50, '9:00', '2021-11-03', 8, 8);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (17, 50, '9:00', '2021-10-27', 9, 9);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (18, 50, '9:00', '2021-11-01', 9, 9);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (19, 50, '9:00', '2021-10-25', 10, 10);
-insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (20, 50, '9:00', '2021-11-18', 10, 10);
+insert into KegiatanVaksinasi(IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (1, 50, '9:00', '2021-06-01', 1, 1);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (2, 50, '9:00', '2021-08-15', 2, 1);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (3, 50, '9:00', '2021-10-02', 3, 2);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (4, 50, '9:00', '2021-12-18', 4, 2);
+insert into KegiatanVaksinasi (IdKegiatan, kuota, waktu, tanggal, IdLokasi, IdPenyelenggara) values (5, 50, '9:00', '2022-02-10', 4, 1);
+
 
 -- belum ada yang Astra, buat booster saja
 insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (1, 1, 1, 1);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (2, 1, 2, 2);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (3, 1, 3, 3);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (4, 1, 4, 4);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (5, 1, 5, 5);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (6, 1, 6, 6);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (7, 1, 7, 7);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (8, 1, 8, 8);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (9, 1, 9, 9);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (10, 1, 10, 10);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (11, 1, 11, 11);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (12, 1, 12, 12);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (13, 1, 13, 13);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (14, 1, 14, 14);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (15, 1, 15, 15);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (16, 1, 16, 16);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (17, 1, 17, 17);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (18, 1, 18, 18);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (19, 1, 19, 19);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (20, 1, 20, 20);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (2, 1, 2, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (3, 1, 3, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (4, 1, 4, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (5, 1, 5, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (6, 1, 6, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (7, 1, 7, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (8, 1, 8, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (9, 1, 9, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (10, 1, 10, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (11, 1, 11, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (12, 1, 12, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (13, 1, 13, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (14, 1, 14, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (15, 1, 15, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (16, 1, 16, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (17, 1, 17, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (18, 1, 18, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (19, 1, 19, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (20, 1, 20, 1);
 insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (21, 1, 21, 1);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (22, 1, 22, 2);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (23, 1, 23, 3);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (24, 1, 24, 4);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (25, 1, 25, 5);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (26, 1, 26, 6);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (27, 1, 27, 7);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (28, 1, 28, 8);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (29, 1, 29, 9);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (30, 1, 30, 10);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (31, 1, 31, 11);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (32, 1, 32, 12);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (33, 1, 33, 13);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (34, 1, 34, 14);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (35, 1, 35, 15);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (36, 1, 36, 16);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (37, 1, 37, 17);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (38, 1, 38, 18);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (39, 1, 39, 19);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (40, 1, 40, 20);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (41, 1, 41, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (22, 1, 22, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (23, 1, 23, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (24, 1, 24, 1);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (25, 1, 25, 1);
+
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (26, 1, 26, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (27, 1, 27, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (28, 1, 28, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (29, 1, 29, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (30, 1, 30, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (31, 1, 31, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (32, 1, 32, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (33, 1, 33, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (34, 1, 34, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (35, 1, 35, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (36, 1, 36, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (37, 1, 37, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (38, 1, 38, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (39, 1, 39, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (40, 1, 40, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (41, 1, 41, 2);
 insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (42, 1, 42, 2);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (43, 1, 43, 3);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (44, 1, 44, 4);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (45, 1, 45, 5);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (46, 1, 46, 6);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (47, 1, 47, 7);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (48, 1, 48, 8);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (49, 1, 49, 9);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (50, 1, 50, 10);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (43, 1, 43, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (44, 1, 44, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (45, 1, 45, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (46, 1, 46, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (47, 1, 47, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (48, 1, 48, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (49, 1, 49, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (50, 1, 50, 2);
 
 
 --dosis 2
 
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (51, 2, 51, 11);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (52, 2, 52, 12);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (53, 2, 53, 13);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (54, 2, 54, 14);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (55, 2, 55, 15);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (56, 2, 56, 16);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (57, 2, 57, 17);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (58, 2, 58, 18);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (59, 2, 59, 19);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (60, 2, 60, 20);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (61, 2, 61, 1);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (62, 2, 62, 2);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (63, 2, 63, 3);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (64, 2, 64, 4);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (65, 2, 65, 5);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (66, 2, 66, 6);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (67, 2, 67, 7);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (68, 2, 68, 8);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (69, 2, 69, 9);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (70, 2, 70, 10);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (71, 2, 71, 11);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (72, 2, 72, 12);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (73, 2, 73, 13);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (74, 2, 74, 14);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (75, 2, 75, 15);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (76, 2, 76, 16);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (77, 2, 77, 17);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (78, 2, 78, 18);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (79, 2, 79, 19);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (80, 2, 80, 20);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (81, 2, 81, 1);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (82, 2, 82, 2);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (83, 2, 83, 3);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (84, 2, 84, 4);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (85, 2, 85, 5);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (86, 2, 86, 6);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (87, 2, 87, 7);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (88, 2, 88, 8);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (89, 2, 89, 9);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (90, 2, 90, 10);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (91, 2, 91, 11);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (92, 2, 92, 12);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (93, 2, 93, 13);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (94, 2, 94, 14);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (95, 2, 95, 15);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (96, 2, 96, 16);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (97, 2, 97, 17);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (98, 2, 98, 18);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (99, 2, 99, 19);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (100, 2, 100, 20);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (51, 2, 1, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (52, 2, 2, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (53, 2, 3, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (54, 2, 4, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (55, 2, 5, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (56, 2, 6, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (57, 2, 7, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (58, 2, 8, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (59, 2, 9, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (60, 2, 10, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (61, 2, 11, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (62, 2, 12, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (63, 2, 13, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (64, 2, 14, 2);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (65, 2, 15, 2);
 
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (66, 2, 26, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (67, 2, 27, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (68, 2, 28, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (69, 2, 29, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (70, 2, 30, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (71, 2, 31, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (72, 2, 32, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (73, 2, 33, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (74, 2, 34, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (75, 2, 35, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (76, 2, 36, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (77, 2, 37, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (78, 2, 38, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (79, 2, 39, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (80, 2, 40, 3);
 
 --dosis 3
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (101, 3, 101, 1);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (102, 3, 102, 2);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (103, 3, 103, 3);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (104, 3, 104, 4);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (105, 3, 105, 5);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (106, 3, 106, 6);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (107, 3, 107, 7);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (108, 3, 108, 8);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (109, 3, 109, 9);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (110, 3, 110, 10);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (111, 3, 111, 11);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (112, 3, 112, 12);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (113, 3, 113, 13);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (114, 3, 114, 14);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (115, 3, 115, 15);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (116, 3, 116, 16);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (117, 3, 117, 17);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (118, 3, 118, 18);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (119, 3, 119, 19);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (120, 3, 120, 20);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (121, 3, 121, 1);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (122, 3, 122, 2);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (123, 3, 123, 3);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (124, 3, 124, 4);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (125, 3, 125, 5);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (126, 3, 126, 6);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (127, 3, 127, 7);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (128, 3, 128, 8);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (129, 3, 129, 9);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (130, 3, 130, 10);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (131, 3, 131, 11);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (132, 3, 132, 12);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (133, 3, 133, 13);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (134, 3, 134, 14);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (135, 3, 135, 15);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (136, 3, 136, 16);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (137, 3, 137, 17);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (138, 3, 138, 18);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (139, 3, 139, 19);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (140, 3, 140, 20);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (141, 3, 141, 1);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (142, 3, 142, 2);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (143, 3, 143, 3);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (144, 3, 144, 4);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (145, 3, 145, 5);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (146, 3, 146, 6);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (147, 3, 147, 7);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (148, 3, 148, 8);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (149, 3, 149, 9);
-insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (150, 3, 150, 10);
 
--- yang akan datang belum dibuat
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (81, 3, 1, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (82, 3, 2, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (83, 3, 3, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (84, 3, 4, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (85, 3, 5, 3);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (86, 3, 26, 4);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (87, 3, 27, 4);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (88, 3, 28, 4);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (89, 3, 29, 4);
+insert into Sertifikat (IdSertifikat, noDosis, IdM, IdKegiatan) values (90, 3, 30, 4);
 
-insert into Memberikan (IdKegiatan, IdVaksin) values (1,  1);
-insert into Memberikan (IdKegiatan, IdVaksin) values (2,  3);
-insert into Memberikan (IdKegiatan, IdVaksin) values (3,  3);
-insert into Memberikan (IdKegiatan, IdVaksin) values (4,  2);
-insert into Memberikan (IdKegiatan, IdVaksin) values (5,  1);
-insert into Memberikan (IdKegiatan, IdVaksin) values (6,  2);
-insert into Memberikan (IdKegiatan, IdVaksin) values (7,  2);
-insert into Memberikan (IdKegiatan, IdVaksin) values (8,  2);
-insert into Memberikan (IdKegiatan, IdVaksin) values (9,  2);
-insert into Memberikan (IdKegiatan, IdVaksin) values (10, 2);
-insert into Memberikan (IdKegiatan, IdVaksin) values (11, 2);
-insert into Memberikan (IdKegiatan, IdVaksin) values (12, 3);
-insert into Memberikan (IdKegiatan, IdVaksin) values (13, 1);
-insert into Memberikan (IdKegiatan, IdVaksin) values (14, 2);
-insert into Memberikan (IdKegiatan, IdVaksin) values (15, 2);
-insert into Memberikan (IdKegiatan, IdVaksin) values (16, 2);
-insert into Memberikan (IdKegiatan, IdVaksin) values (17, 3);
-insert into Memberikan (IdKegiatan, IdVaksin) values (18, 3);
-insert into Memberikan (IdKegiatan, IdVaksin) values (19, 3);
-insert into Memberikan (IdKegiatan, IdVaksin) values (20, 1);
 
--- pendaftaran, kesehatan, mengikuti belum ada recordnya
+--Memberikan
+
+insert into Memberikan (IdKegiatan, IdVaksin) values (1,1);
+insert into Memberikan (IdKegiatan, IdVaksin) values (2,3);
+insert into Memberikan (IdKegiatan, IdVaksin) values (3,3);
+insert into Memberikan (IdKegiatan, IdVaksin) values (4,2);
+insert into Memberikan (IdKegiatan, IdVaksin) values (4,1);
+
+
+
 
 --pendaftaran
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (1, 'Diterima', 1, 1, '09/26/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (2, 'Diterima', 2, 2, '09/22/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (3, 'Diterima', 3, 3, '09/24/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (4, 'Diterima', 4, 4, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (5, 'Diterima', 5, 5, '09/15/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (6, 'Diterima', 6, 6, '09/2/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (7, 'Diterima', 7, 7, '09/13/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (8, 'Diterima', 8, 8, '09/1/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (9, 'Diterima', 9, 9, '09/1/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (10, 'Diterima', 10, 10, '09/26/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (11, 'Diterima', 11, 11, '09/15/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (12, 'Diterima', 12, 12, '09/21/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (13, 'Diterima', 13, 13, '09/8/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (14, 'Diterima', 14, 14, '09/16/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (15, 'Diterima', 15, 15, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (16, 'Diterima', 16, 16, '09/21/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (17, 'Diterima', 17, 17, '09/27/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (18, 'Diterima', 18, 18, '09/19/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (19, 'Diterima', 19, 19, '09/2/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (20, 'Diterima', 20, 20, '09/7/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (21, 'Diterima', 21, 1, '09/29/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (22, 'Diterima', 22, 2, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (23, 'Diterima', 23, 3, '09/26/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (24, 'Diterima', 24, 4, '09/28/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (25, 'Diterima', 25, 5, '09/1/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (26, 'Diterima', 26, 6, '09/27/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (27, 'Diterima', 27, 7, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (28, 'Diterima', 28, 8, '09/15/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (29, 'Diterima', 29, 9, '09/25/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (30, 'Diterima', 30, 10, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (31, 'Diterima', 31, 11, '09/17/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (32, 'Diterima', 32, 12, '09/19/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (33, 'Diterima', 33, 13, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (34, 'Diterima', 34, 14, '09/23/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (35, 'Diterima', 35, 15, '09/12/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (36, 'Diterima', 36, 16, '09/8/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (37, 'Diterima', 37, 17, '09/2/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (38, 'Diterima', 38, 18, '09/20/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (39, 'Diterima', 39, 19, '09/10/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (40, 'Diterima', 40, 20, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (41, 'Diterima', 41, 1, '09/12/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (42, 'Diterima', 42, 2, '09/24/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (43, 'Diterima', 43, 3, '09/7/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (44, 'Diterima', 44, 4, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (45, 'Diterima', 45, 5, '09/27/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (46, 'Diterima', 46, 6, '09/7/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (47, 'Diterima', 47, 7, '09/15/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (48, 'Diterima', 48, 8, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (49, 'Diterima', 49, 9, '09/20/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (50, 'Diterima', 50, 10, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (51, 'Diterima', 51, 11, '09/26/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (52, 'Diterima', 52, 12, '09/8/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (53, 'Diterima', 53, 13, '09/22/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (54, 'Diterima', 54, 14, '09/7/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (55, 'Diterima', 55, 15, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (56, 'Diterima', 56, 16, '09/3/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (57, 'Diterima', 57, 17, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (58, 'Diterima', 58, 18, '09/28/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (59, 'Diterima', 59, 19, '09/12/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (60, 'Diterima', 60, 20, '09/9/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (61, 'Diterima', 61, 1, '09/21/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (62, 'Diterima', 62, 2, '09/18/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (63, 'Diterima', 63, 3, '09/27/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (64, 'Diterima', 64, 4, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (65, 'Diterima', 65, 5, '09/22/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (66, 'Diterima', 66, 6, '09/24/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (67, 'Diterima', 67, 7, '09/5/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (68, 'Diterima', 68, 8, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (69, 'Diterima', 69, 9, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (70, 'Diterima', 70, 10, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (71, 'Diterima', 71, 11, '09/28/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (72, 'Diterima', 72, 12, '09/29/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (73, 'Diterima', 73, 13, '09/13/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (74, 'Diterima', 74, 14, '09/5/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (75, 'Diterima', 75, 15, '09/12/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (76, 'Diterima', 76, 16, '09/8/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (77, 'Diterima', 77, 17, '09/16/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (78, 'Diterima', 78, 18, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (79, 'Diterima', 79, 19, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (80, 'Diterima', 80, 20, '09/2/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (81, 'Diterima', 81, 1, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (82, 'Diterima', 82, 2, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (83, 'Diterima', 83, 3, '09/3/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (84, 'Diterima', 84, 4, '09/24/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (85, 'Diterima', 85, 5, '09/17/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (86, 'Diterima', 86, 6, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (87, 'Diterima', 87, 7, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (88, 'Diterima', 88, 8, '09/15/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (89, 'Diterima', 89, 9, '09/8/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (90, 'Diterima', 90, 10, '09/29/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (91, 'Diterima', 91, 11, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (92, 'Diterima', 92, 12, '09/28/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (93, 'Diterima', 93, 13, '09/21/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (94, 'Diterima', 94, 14, '09/22/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (95, 'Diterima', 95, 15, '09/16/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (96, 'Diterima', 96, 16, '09/17/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (97, 'Diterima', 97, 17, '09/3/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (98, 'Diterima', 98, 18, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (99, 'Diterima', 99, 19, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (100, 'Diterima', 100, 20, '09/13/2021');
 
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (101, 'Diterima', 101, 1, '09/26/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (102, 'Diterima', 102, 2, '09/22/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (103, 'Diterima', 103, 3, '09/24/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (104, 'Diterima', 104, 4, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (105, 'Diterima', 105, 5, '09/15/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (106, 'Diterima', 106, 6, '09/2/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (107, 'Diterima', 107, 7, '09/13/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (108, 'Diterima', 108, 8, '09/1/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (109, 'Diterima', 109, 9, '09/1/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (110, 'Diterima', 110, 10, '09/26/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (111, 'Diterima', 111, 11, '09/15/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (112, 'Diterima', 112, 12, '09/21/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (113, 'Diterima', 113, 13, '09/8/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (114, 'Diterima', 114, 14, '09/16/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (115, 'Diterima', 115, 15, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (116, 'Diterima', 116, 16, '09/21/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (117, 'Diterima', 117, 17, '09/27/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (118, 'Diterima', 118, 18, '09/19/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (119, 'Diterima', 119, 19, '09/2/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (120, 'Diterima', 120, 20, '09/7/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (121, 'Diterima', 121, 1, '09/29/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (122, 'Diterima', 122, 2, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (123, 'Diterima', 123, 3, '09/26/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (124, 'Diterima', 124, 4, '09/28/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (125, 'Diterima', 125, 5, '09/1/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (126, 'Diterima', 126, 6, '09/27/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (127, 'Diterima', 127, 7, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (128, 'Diterima', 128, 8, '09/15/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (129, 'Diterima', 129, 9, '09/25/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (130, 'Diterima', 130, 10, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (131, 'Diterima', 131, 11, '09/17/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (132, 'Diterima', 132, 12, '09/19/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (133, 'Diterima', 133, 13, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (134, 'Diterima', 134, 14, '09/23/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (135, 'Diterima', 135, 15, '09/12/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (136, 'Diterima', 136, 16, '09/8/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (137, 'Diterima', 137, 17, '09/2/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (138, 'Diterima', 138, 18, '09/20/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (139, 'Diterima', 139, 19, '09/10/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (140, 'Diterima', 140, 20, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (141, 'Diterima', 141, 1, '09/12/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (142, 'Diterima', 142, 2, '09/24/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (143, 'Diterima', 143, 3, '09/7/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (144, 'Diterima', 144, 4, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (145, 'Diterima', 145, 5, '09/27/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (146, 'Diterima', 146, 6, '09/7/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (147, 'Diterima', 147, 7, '09/15/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (148, 'Diterima', 148, 8, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (149, 'Diterima', 149, 9, '09/20/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (150, 'Diterima', 150, 10, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (151, 'Diterima', 151, 11, '09/26/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (152, 'Diterima', 152, 12, '09/8/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (153, 'Diterima', 153, 13, '09/22/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (154, 'Diterima', 154, 14, '09/7/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (155, 'Diterima', 155, 15, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (156, 'Diterima', 156, 16, '09/3/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (157, 'Diterima', 157, 17, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (158, 'Diterima', 158, 18, '09/28/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (159, 'Diterima', 159, 19, '09/12/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (160, 'Diterima', 160, 20, '09/9/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (161, 'Diterima', 161, 1, '09/21/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (162, 'Diterima', 162, 2, '09/18/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (163, 'Diterima', 163, 3, '09/27/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (164, 'Diterima', 164, 4, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (165, 'Diterima', 165, 5, '09/22/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (166, 'Diterima', 166, 6, '09/24/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (167, 'Diterima', 167, 7, '09/5/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (168, 'Diterima', 168, 8, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (169, 'Diterima', 169, 9, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (170, 'Diterima', 170, 10, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (171, 'Diterima', 171, 11, '09/28/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (172, 'Diterima', 172, 12, '09/29/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (173, 'Diterima', 173, 13, '09/13/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (174, 'Diterima', 174, 14, '09/5/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (175, 'Diterima', 175, 15, '09/12/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (176, 'Diterima', 176, 16, '09/8/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (177, 'Diterima', 177, 17, '09/16/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (178, 'Diterima', 178, 18, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (179, 'Diterima', 179, 19, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (180, 'Diterima', 180, 20, '09/2/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (181, 'Diterima', 181, 1, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (182, 'Diterima', 182, 2, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (183, 'Diterima', 183, 3, '09/3/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (184, 'Diterima', 184, 4, '09/24/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (185, 'Diterima', 185, 5, '09/17/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (186, 'Diterima', 186, 6, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (187, 'Diterima', 187, 7, '09/30/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (188, 'Diterima', 188, 8, '09/15/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (189, 'Diterima', 189, 9, '09/8/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (190, 'Diterima', 190, 10, '09/29/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (191, 'Diterima', 191, 11, '09/4/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (192, 'Diterima', 192, 12, '09/28/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (193, 'Diterima', 193, 13, '09/21/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (194, 'Diterima', 194, 14, '09/22/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (195, 'Diterima', 195, 15, '09/16/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (196, 'Diterima', 196, 16, '09/17/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (197, 'Diterima', 197, 17, '09/3/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (198, 'Diterima', 198, 18, '09/6/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (199, 'Diterima', 199, 19, '09/11/2021');
-insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (200, 'Diterima', 200, 20, '09/13/2021');
+--dosis1
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (1, 'Diterima', 1, 1, '09/26/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (2, 'Diterima', 2, 1, '09/22/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (3, 'Diterima', 3, 1, '09/24/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (4, 'Diterima', 4, 1, '09/30/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (5, 'Diterima', 5, 1, '09/15/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (6, 'Diterima', 6, 1, '09/2/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (7, 'Diterima', 7, 1, '09/13/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (8, 'Diterima', 8, 1, '09/1/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (9, 'Diterima', 9, 1, '09/1/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (10, 'Diterima', 10, 1, '09/26/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (11, 'Diterima', 11, 1, '09/15/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (12, 'Diterima', 12, 1, '09/21/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (13, 'Diterima', 13, 1, '09/8/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (14, 'Diterima', 14, 2, '09/16/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (15, 'Diterima', 15, 2, '09/6/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (16, 'Diterima', 16, 2, '09/21/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (17, 'Diterima', 17, 2, '09/27/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (18, 'Diterima', 18, 2, '09/19/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (19, 'Diterima', 19, 2, '09/2/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (20, 'Diterima', 20, 2, '09/7/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (21, 'Diterima', 21, 2, '09/29/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (22, 'Diterima', 22, 2, '09/30/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (23, 'Diterima', 23, 2, '09/26/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (24, 'Diterima', 24, 2, '09/28/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (25, 'Diterima', 25, 2, '09/1/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (26, 'Diterima', 26, 3, '09/27/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (27, 'Diterima', 27, 3, '09/4/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (28, 'Diterima', 28, 3, '09/15/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (29, 'Diterima', 29, 3, '09/25/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (30, 'Diterima', 30, 3, '09/4/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (31, 'Diterima', 31, 3, '09/17/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (32, 'Diterima', 32, 3, '09/19/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (33, 'Diterima', 33, 3, '09/4/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (34, 'Diterima', 34, 3, '09/23/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (35, 'Diterima', 35, 3, '09/12/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (36, 'Diterima', 36, 3, '09/8/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (37, 'Diterima', 37, 3, '09/2/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (38, 'Diterima', 38, 3, '09/20/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (39, 'Diterima', 39, 4, '09/10/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (40, 'Diterima', 40, 4, '09/6/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (41, 'Diterima', 41, 4, '09/12/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (42, 'Diterima', 42, 4, '09/24/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (43, 'Diterima', 43, 4, '09/7/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (44, 'Diterima', 44, 4, '09/11/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (45, 'Diterima', 45, 4, '09/27/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (46, 'Diterima', 46, 4, '09/7/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (47, 'Diterima', 47, 4, '09/15/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (48, 'Diterima', 48, 4, '09/11/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (49, 'Diterima', 49, 4, '09/20/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (50, 'Diterima', 50, 4, '09/11/2021');
+
+--dosis2
+
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (51, 'Diterima', 1, 1, '09/26/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (52, 'Diterima', 2, 1, '09/8/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (53, 'Diterima', 3, 1, '09/22/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (54, 'Diterima', 4, 1, '09/7/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (55, 'Diterima', 5, 1, '09/11/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (56, 'Diterima', 6, 1, '09/3/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (57, 'Diterima', 7, 1, '09/4/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (58, 'Diterima', 8, 2, '09/28/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (59, 'Diterima', 9, 2, '09/12/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (60, 'Diterima', 10, 2, '09/9/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (61, 'Diterima', 11, 2, '09/21/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (62, 'Diterima', 12, 2, '09/18/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (63, 'Diterima', 13, 2, '09/27/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (64, 'Diterima', 14, 2, '09/6/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (65, 'Diterima', 15, 3, '09/22/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (66, 'Diterima', 16, 3, '09/24/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (67, 'Diterima', 17, 3, '09/5/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (68, 'Diterima', 18, 3, '09/30/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (69, 'Diterima', 19, 3, '09/11/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (70, 'Diterima', 20, 3, '09/11/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (71, 'Diterima', 21, 3, '09/28/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (72, 'Diterima', 22, 4, '09/29/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (73, 'Diterima', 23, 4, '09/13/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (74, 'Diterima', 24, 4, '09/5/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (75, 'Diterima', 25, 4, '09/12/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (76, 'Diterima', 26, 4, '09/8/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (77, 'Diterima', 27, 4, '09/16/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (78, 'Diterima', 28, 4, '09/4/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (79, 'Diterima', 29, 4, '09/6/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (80, 'Diterima', 30, 4, '09/2/2021');
+
+--dosis 3
+
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (81, 'Diterima', 1, 1, '09/6/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (82, 'Diterima', 2, 1, '09/30/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (83, 'Diterima', 3, 2, '09/3/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (84, 'Diterima', 4, 2, '09/24/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (85, 'Diterima', 5, 3, '09/17/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (86, 'Diterima', 6, 3, '09/30/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (87, 'Diterima', 7, 3, '09/30/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (88, 'Diterima', 8, 4, '09/15/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (89, 'Diterima', 9, 4, '09/8/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (90, 'Diterima', 10, 4, '09/29/2021');
+
+--baru daftar
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (91, 'Menunggu Konfirmasi', 91, 1, '09/4/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (92, 'Menunggu Konfirmasi', 92, 1, '09/28/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (93, 'Menunggu Konfirmasi', 93, 2, '09/21/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (94, 'Menunggu Konfirmasi', 94, 2, '09/22/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (95, 'Menunggu Konfirmasi', 95, 2, '09/16/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (96, 'Menunggu Konfirmasi', 96, 3, '09/17/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (97, 'Menunggu Konfirmasi', 97, 3, '09/3/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (98, 'Menunggu Konfirmasi', 98, 4, '09/6/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (99, 'Menunggu Konfirmasi', 99, 4, '09/11/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (100, 'Menunggu Konfirmasi', 100, 4, '09/13/2021');
+
+--ditolak
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (101, 'Ditolak', 101, 1, '09/26/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (102, 'Ditolak', 102, 1, '09/22/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (103, 'Ditolak', 103, 1, '09/24/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (104, 'Ditolak', 104, 1, '09/30/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (105, 'Ditolak', 105, 2, '09/15/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (106, 'Ditolak', 106, 2, '09/2/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (107, 'Ditolak', 107, 2, '09/13/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (108, 'Ditolak', 108, 3, '09/1/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (109, 'Ditolak', 109, 3, '09/1/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (110, 'Ditolak', 110, 3, '09/26/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (111, 'Ditolak', 111, 4, '09/15/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (112, 'Ditolak', 112, 4, '09/21/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (113, 'Ditolak', 113, 4, '09/8/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (114, 'Ditolak', 114, 4, '09/16/2021');
+insert into Pendaftaran (IdP, statusP, IdM, IdKegiatan, tanggalP) values (115, 'Ditolak', 115, 4, '09/6/2021');
+
 
 --mengikuti
+
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (1,1,'09:25','09:32',1);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (21,1,'09:22','09:36',1);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (41,1,'09:16','09:57',1);
@@ -767,6 +480,8 @@ INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (181,
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (1,1,'10:11','10:43',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (21,1,'10:12','10:50',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (41,1,'10:28','10:48',2);
+
+
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (61,1,'10:09','10:52',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (81,1,'10:24','10:39',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (101,1,'10:01','10:47',2);
