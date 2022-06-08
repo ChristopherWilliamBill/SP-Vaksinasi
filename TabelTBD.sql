@@ -9,6 +9,7 @@ drop table KegiatanVaksinasi
 drop table Penyelenggara
 drop table Lokasi
 drop table Kota
+drop table Provinsi
 drop table Masyarakat
 
 create table Masyarakat (
@@ -606,7 +607,7 @@ INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (23,1
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (24,1,'14:18','14:32',6);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (25,1,'14:06','14:50',6);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (61,1,'09:00','09:54',1);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (62,1,'09:28','09.44',1);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (62,1,'09:28','09:44',1);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (61,1,'10:11','10:43',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (62,1,'10:09','10:52',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (61,1,'11:12','11:50',3);
@@ -856,7 +857,7 @@ INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (13,2
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (14,2,'14:26','14:52',6);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (15,2,'14:03','14:52',6);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (63,2,'09:00','09:54',1);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (64,2,'09:28','09.44',1);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (64,2,'09:28','09:44',1);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (63,2,'10:11','10:43',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (64,2,'10:09','10:52',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (63,2,'11:12','11:50',3);
@@ -966,7 +967,7 @@ INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (3,3,
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (4,3,'13:23','13:59',5);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (5,3,'13:24','13:48',5);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (65,3,'09:00','09:54',1);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (66,3,'09:28','09.44',1);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (66,3,'09:28','09:44',1);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (65,3,'10:11','10:43',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (66,3,'10:09','10:52',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (65,3,'11:12','11:50',3);
@@ -1006,9 +1007,9 @@ INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (28,4
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (29,4,'14:26','14:52',6);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (30,4,'14:03','14:52',6);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (67,4,'09:00','09:54',1);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (68,4,'09:28','09.44',1);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (68,4,'09:28','09:44',1);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (69,4,'09:00','09:54',1);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (70,4,'09:28','09.44',1);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (70,4,'09:28','09:44',1);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (67,4,'10:11','10:43',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (68,4,'10:09','10:52',2);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (69,4,'10:11','10:43',2);
