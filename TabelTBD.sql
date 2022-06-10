@@ -13,7 +13,7 @@ drop table Provinsi
 drop table Masyarakat
 
 create table Masyarakat (
-	IdM INT PRIMARY KEY,
+	IdM INT IDENTITY(1,1) PRIMARY KEY,
 	email VARCHAR(50),
 	noHP VARCHAR(50),
 	nama VARCHAR(50),
@@ -24,18 +24,18 @@ create table Masyarakat (
 );
 
 CREATE TABLE Provinsi(
-    IdProvinsi INT PRIMARY KEY,
+    IdProvinsi INT IDENTITY(1,1) PRIMARY KEY,
     namaProvinsi VARCHAR(50)
 )
 
 CREATE TABLE Kota(
-    IdKota INT PRIMARY KEY,
+    IdKota INT IDENTITY(1,1) PRIMARY KEY,
     namaKota VARCHAR(50),
     IdProvinsi INT FOREIGN KEY REFERENCES Provinsi(IdProvinsi)
 )
 
 CREATE TABLE Lokasi(
-    IdLokasi INT PRIMARY KEY,
+    IdLokasi INT IDENTITY(1,1) PRIMARY KEY,
     namaLokasi VARCHAR(50),
     IdKota INT FOREIGN KEY REFERENCES Kota(IdKota)
 )
@@ -43,13 +43,13 @@ CREATE TABLE Lokasi(
 
 
 CREATE TABLE Penyelenggara(
-    IdPenyelenggara INT PRIMARY KEY,
+    IdPenyelenggara INT IDENTITY(1,1) PRIMARY KEY,
     nama VARCHAR(50),
     urutanTahapan VARCHAR(15)
 )
 
 CREATE TABLE KegiatanVaksinasi(
-    IdKegiatan INT PRIMARY KEY,
+    IdKegiatan INT IDENTITY(1,1) PRIMARY KEY,
     kuota INT,
     waktu TIME,
     tanggal DATE,
@@ -60,24 +60,24 @@ CREATE TABLE KegiatanVaksinasi(
 
 
 CREATE TABLE Tahapan(
-    IdTahapan INT PRIMARY KEY,
+    IdTahapan INT IDENTITY(1,1) PRIMARY KEY,
     namaTahapan VARCHAR(30)
 )
 
 CREATE TABLE Vaksin(
-    IdVaksin INT PRIMARY KEY,
+    IdVaksin INT IDENTITY(1,1) PRIMARY KEY,
     namaVaksin VARCHAR(30)
 )
 
 CREATE TABLE Sertifikat(
-    IdSertifikat INT PRIMARY KEY,
+    IdSertifikat INT IDENTITY(1,1) PRIMARY KEY,
     noDosis INT,
     IdM INT FOREIGN KEY REFERENCES Masyarakat(IdM),
 	IdKegiatan INT FOREIGN KEY REFERENCES KegiatanVaksinasi(IdKegiatan)
 )
 
 CREATE TABLE Pendaftaran(
-    IdP INT PRIMARY KEY,
+    IdP INT IDENTITY(1,1) PRIMARY KEY,
     tanggalP DATE,
     statusP VARCHAR(100),
     IdM INT FOREIGN KEY REFERENCES Masyarakat(IdM),
@@ -85,7 +85,7 @@ CREATE TABLE Pendaftaran(
 )
 
 CREATE TABLE Kesehatan(
-    IdKesehatan INT PRIMARY KEY,
+    IdKesehatan INT IDENTITY(1,1) PRIMARY KEY,
     komorbid VARCHAR(30),
     suhuTubuh INT,
     tanggalTerkenaCovid DATE,
@@ -102,7 +102,7 @@ CREATE TABLE Mengikuti(
 )
 
 CREATE TABLE Memberikan(
-    IdKegiatan INT PRIMARY KEY,
+    IdKegiatan INT IDENTITY(1,1) PRIMARY KEY,
     IdVaksin INT
 )
 
@@ -741,31 +741,31 @@ INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (47,2
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (48,2,'13:27','13:36',5);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (49,2,'13:23','13:39',5);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (50,2,'13:01','13:33',5);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (26,2,'14:21','14:31',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (27,2,'14:23','14:45',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (28,2,'14:07','14:36',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (29,2,'14:04','14:49',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (30,2,'14:02','14:43',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (31,2,'14:17','14:50',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (32,2,'14:17','14:58',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (33,2,'14:26','14:37',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (34,2,'14:02','14:58',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (35,2,'14:21','14:40',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (36,2,'14:14','14:43',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (37,2,'14:25','14:33',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (38,2,'14:07','14:52',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (39,2,'14:26','14:52',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (40,2,'14:03','14:52',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (41,2,'14:21','14:30',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (42,2,'14:17','14:38',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (43,2,'14:27','14:49',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (44,2,'14:14','14:31',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (45,2,'14:07','14:41',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (46,2,'14:12','14:49',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (47,2,'14:06','14:38',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (48,2,'14:23','14:57',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (49,2,'14:18','14:32',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (50,2,'14:06','14:50',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (26,2,'14:21','15:31',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (27,2,'14:23','15:45',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (28,2,'14:07','15:36',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (29,2,'14:04','15:49',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (30,2,'14:02','15:43',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (31,2,'14:17','15:50',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (32,2,'14:17','15:58',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (33,2,'14:26','15:37',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (34,2,'14:02','15:58',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (35,2,'14:21','15:40',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (36,2,'14:14','15:43',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (37,2,'14:25','15:33',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (38,2,'14:07','15:52',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (39,2,'14:26','15:52',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (40,2,'14:03','15:52',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (41,2,'14:21','15:30',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (42,2,'14:17','15:38',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (43,2,'14:27','15:49',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (44,2,'14:14','15:31',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (45,2,'14:07','15:41',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (46,2,'14:12','15:49',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (47,2,'14:06','15:38',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (48,2,'14:23','15:57',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (49,2,'14:18','15:32',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (50,2,'14:06','15:50',6);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (1,2,'9:15','9:36',1);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (2,2,'9:00','9:49',1);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (3,2,'9:29','9:36',1);
@@ -841,21 +841,21 @@ INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (12,2
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (13,2,'13:10','13:42',5);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (14,2,'13:15','13:31',5);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (15,2,'13:15','13:39',5);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (1,2,'14:21','14:31',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (2,2,'14:23','14:45',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (3,2,'14:07','14:36',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (4,2,'14:04','14:49',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (5,2,'14:02','14:43',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (6,2,'14:17','14:50',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (7,2,'14:17','14:58',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (8,2,'14:26','14:37',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (9,2,'14:02','14:58',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (10,2,'14:21','14:40',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (11,2,'14:14','14:43',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (12,2,'14:25','14:33',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (13,2,'14:07','14:52',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (14,2,'14:26','14:52',6);
-INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (15,2,'14:03','14:52',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (1,2,'14:21','15:31',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (2,2,'14:23','15:45',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (3,2,'14:07','15:36',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (4,2,'14:04','15:49',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (5,2,'14:02','15:43',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (6,2,'14:17','15:50',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (7,2,'14:17','15:58',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (8,2,'14:26','15:37',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (9,2,'14:02','15:58',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (10,2,'14:21','15:40',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (11,2,'14:14','15:43',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (12,2,'14:25','15:33',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (13,2,'14:07','15:52',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (14,2,'14:26','15:52',6);
+INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (15,2,'14:03','15:52',6);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (63,2,'09:00','09:54',1);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (64,2,'09:28','09:44',1);
 INSERT INTO [Mengikuti] (IdM,IdKegiatan,jamAwal,jamAkhir,IdTahapan) VALUES (63,2,'10:11','10:43',2);
