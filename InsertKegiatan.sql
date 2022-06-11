@@ -3,7 +3,11 @@ alter procedure InsertKegiatan
 	@waktu time,
 	@tanggal date,
 	@idLokasi int,
-	@idPenyelenggara int
+	@idPenyelenggara int,
+	@idVaksin int
 as
 	insert into KegiatanVaksinasi(kuota, waktu, tanggal, IdLokasi, IdPenyelenggara)
 	values (@kuota, @waktu, @tanggal, @idLokasi,@idPenyelenggara)
+
+	insert into Memberikan
+	values ((select max(IdKegiatan) from KegiatanVaksinasi), @idVaksin)
