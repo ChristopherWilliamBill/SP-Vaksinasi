@@ -48,3 +48,5 @@ as
 
 	select *
 	from #result
+
+	--exec LaporanHarianPelaksanaan '2021-12-18',2

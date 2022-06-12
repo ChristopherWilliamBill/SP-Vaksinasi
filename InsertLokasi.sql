@@ -4,3 +4,5 @@ alter procedure InsertLokasi
 as
 	insert into Lokasi(namaLokasi, IdKota)
 	values (@nama, @idKota)
+
+	--exec InsertLokasi 'Jalan Dago', 1

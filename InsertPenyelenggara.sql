@@ -4,3 +4,5 @@ alter procedure InsertPenyelenggara
 as
 	insert into Penyelenggara
 	values (@nama, @urutan)
+
+	--exec InsertPenyelenggara 'BandungIndahPlaza','123456'

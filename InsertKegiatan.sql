@@ -11,3 +11,5 @@ as
 
 	insert into Memberikan
 	values ((select max(IdKegiatan) from KegiatanVaksinasi), @idVaksin)
+
+	--exec InsertKegiatan 50,'09:00','2022-10-10',1,1,1

@@ -3,3 +3,5 @@ alter procedure InsertProvinsi
 as
 	insert into Provinsi(namaProvinsi)
 	values (@nama)
+
+	--exec InsertProvinsi 'DKI Jakarta'

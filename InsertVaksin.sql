@@ -4,3 +4,5 @@ alter procedure InsertVaksin
 as
 	insert into Vaksin
 	values (@id, @nama)
+
+	--exec InsertVaksin 4,'Astra Zaneca'

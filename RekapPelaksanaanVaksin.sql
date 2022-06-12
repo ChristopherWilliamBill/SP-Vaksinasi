@@ -38,4 +38,4 @@ as
 
 	EXEC sp_executesql @sql
 
-exec RekapPelaksanaanVaksin 1,null,null,null
+--exec RekapPelaksanaanVaksin 1,null,null,null

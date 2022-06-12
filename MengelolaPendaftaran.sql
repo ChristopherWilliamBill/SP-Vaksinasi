@@ -44,3 +44,6 @@ as
 			update Pendaftaran set statusP = @statusAkhir where IdP = @idPendaftaran
 		end
 	end
+
+	--exec MengelolaPendaftaran 'Melihat',null, null, 'Diterima',1
+	--exec MengelolaPendaftaran 'Mengelola', 'Diterima', 60, null, null 

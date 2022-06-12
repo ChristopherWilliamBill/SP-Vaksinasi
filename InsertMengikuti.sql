@@ -7,3 +7,5 @@ alter procedure InsertMengikuti
 as
 	insert into Mengikuti
 	values (@idM, @idKegiatan, @jamAwal, @jamAkhir, @idTahapan)
+
+	--exec InsertMengikuti 60,5,'09:15','09:35',1
