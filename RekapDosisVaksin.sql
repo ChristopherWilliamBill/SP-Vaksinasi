@@ -31,4 +31,4 @@ as
 
 	EXEC sp_executesql @sql
 
---exec RekapDosisVaksin 1,0,1
+exec RekapDosisVaksin 1,0,1

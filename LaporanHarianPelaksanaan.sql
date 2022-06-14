@@ -1,4 +1,4 @@
-alter procedure LaporanHarianPelaksanaan
+create procedure LaporanHarianPelaksanaan
 	@tanggal date,
 	@idPenyelenggara int
 as
@@ -49,4 +49,4 @@ as
 	select *
 	from #result
 
-	--exec LaporanHarianPelaksanaan '2021-12-18',2
+	exec LaporanHarianPelaksanaan '2021-12-18',2

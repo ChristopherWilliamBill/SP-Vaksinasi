@@ -19,7 +19,9 @@ as
 
 		if @komorbid='Ya' or @suhuTubuh >=37.5 or @selisihTanggalTerkena<3 or @tekananAtas>=180 or @tekananBawah>=110 
 		begin
-			update pendaftaran set statusP = 'Ditolak' where pendaftaran.idm = @Idm and tanggalp = (select max(tanggalP)from pendaftaran)
+			update pendaftaran set statusP = 'Ditolak' where pendaftaran.idm = @Idm and tanggalp = (select max(tanggalP)from pendaftaran where Pendaftaran.IdM = @Idm)
 		end
-		--exec ValidasiPendaftaran 72
+		exec ValidasiPendaftaran 51
+		select * from Pendaftaran join kesehatan on Pendaftaran.IdM = Kesehatan.IdM where pendaftaran.IdM = 51
+		
 

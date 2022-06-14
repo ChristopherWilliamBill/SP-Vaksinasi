@@ -1,4 +1,4 @@
-alter procedure LihatSemuaVaksinasiBagiPemprov
+create procedure LihatSemuaVaksinasiBagiPemprov
 	@IdProvinsi int
 as
 	select provinsi.namaprovinsi, kota.namakota, lokasi.namalokasi, penyelenggara.nama as [Nama Penyelenggara], kuota, kegiatanvaksinasi.idkegiatan, waktu, tanggal
@@ -6,4 +6,4 @@ as
 	join kegiatanvaksinasi on kegiatanvaksinasi.idlokasi = lokasi.idlokasi join penyelenggara on penyelenggara.idpenyelenggara = kegiatanvaksinasi.idpenyelenggara
 	where provinsi.idprovinsi = @IdProvinsi
 
-	--exec LihatSemuaVaksinasiBagiPemprov 1
+	exec LihatSemuaVaksinasiBagiPemprov 1

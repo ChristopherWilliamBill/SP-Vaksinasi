@@ -1,4 +1,4 @@
-alter procedure MembuatPendaftaranBaru
+create procedure MembuatPendaftaranBaru
 	@email varchar(50),
 	@noHP varchar(50),
 	@nama varchar(50),
@@ -17,9 +17,9 @@ as
 	insert into Pendaftaran values (@tanggalP,'Menunggu Konfirmasi',@Idm,@IdKegiatan)
 
 
-	--exec MembuatPendaftaranBaru 'nganag2@gmail.com',1234567, 'nganga2', 'jalan nganga2', '1234567', '2000-10-11', 'Female','2022-06-10', 5
-
-
+	exec MembuatPendaftaranBaru 'nganag2@gmail.com',1234567, 'nganga2', 'jalan nganga2', '1234567', '2000-10-11', 'Female','2022-06-10', 5
+	select * from Masyarakat
+	select * from Pendaftaran
 
 
 

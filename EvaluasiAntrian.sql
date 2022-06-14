@@ -1,4 +1,4 @@
-alter procedure EvaluasiAntrian
+create procedure EvaluasiAntrian
 	@idKegiatan int
 as
 	declare @result table (
@@ -57,4 +57,4 @@ as
 	select *
 	from @result
 
-	--exec EvaluasiAntrian 1
+	exec EvaluasiAntrian 1

@@ -1,4 +1,4 @@
-alter procedure RekapPelaksanaanVaksin
+create procedure RekapPelaksanaanVaksin
 	@idPenyelenggara int,
 	@idProvinsi int,
 	@idKota int,
@@ -38,4 +38,4 @@ as
 
 	EXEC sp_executesql @sql
 
---exec RekapPelaksanaanVaksin 1,null,null,null
+exec RekapPelaksanaanVaksin 1,null,null,null

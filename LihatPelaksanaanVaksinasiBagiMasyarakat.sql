@@ -1,4 +1,4 @@
-alter procedure LihatPelaksanaanVaksinasiBagiMasyarakat
+create procedure LihatPelaksanaanVaksinasiBagiMasyarakat
     @namaKota varchar (50),
     @tanggalKegiatanMin date,
     @tanggalKegiatanMax date
@@ -35,4 +35,4 @@ as
 	set @sql = concat(@sql, ' statusp != ','''Ditolak''',' group by penyelenggara.nama, kegiatanvaksinasi.idkegiatan, kegiatanvaksinasi.tanggal, kegiatanvaksinasi.waktu, lokasi.namalokasi, penyelenggara.urutantahapan, kegiatanvaksinasi.kuota')
     exec sp_executesql @sql
 
-    --exec LihatPelaksanaanVaksinasiBagiMasyarakat null, '2010-01-01', '2021-12-31'
+    exec LihatPelaksanaanVaksinasiBagiMasyarakat null, '2010-01-01', '2021-12-31'

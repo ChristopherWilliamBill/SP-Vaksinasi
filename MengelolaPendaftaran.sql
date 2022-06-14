@@ -1,4 +1,4 @@
-alter procedure MengelolaPendaftaran
+create procedure MengelolaPendaftaran
 	@query varchar(50),
 	@statusAkhir varchar(50),
 	@idPendaftaran int,
@@ -45,5 +45,6 @@ as
 		end
 	end
 
-	--exec MengelolaPendaftaran 'Melihat',null, null, 'Diterima',1
-	--exec MengelolaPendaftaran 'Mengelola', 'Diterima', 60, null, null 
+	exec MengelolaPendaftaran 'Melihat',null, null, 'Diterima',1
+	exec MengelolaPendaftaran 'Mengelola', 'Diterima', 91, null, null 
+	select * from Pendaftaran where idm=51
