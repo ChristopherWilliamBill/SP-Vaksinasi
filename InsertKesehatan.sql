@@ -14,7 +14,7 @@ as
 	select * from Masyarakat where idm = 51
 	select * from Pendaftaran where IdM = 51
 	select * from Kesehatan where idm = 51
-	--select * from Pendaftaran where IdM = 51
+	select * from Pendaftaran where IdM = 51
 	
 
 

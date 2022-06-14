@@ -1,4 +1,4 @@
-alter procedure ValidasiPendaftaran
+create procedure ValidasiPendaftaran
     @Idm int
 as
     declare 

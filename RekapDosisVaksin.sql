@@ -1,4 +1,4 @@
-alter procedure RekapDosisVaksin
+create procedure RekapDosisVaksin
 	@dosis1 bit,
 	@dosis2 bit,
 	@dosis3 bit
@@ -32,3 +32,4 @@ as
 	EXEC sp_executesql @sql
 
 exec RekapDosisVaksin 1,0,1
+exec RekapDosisVaksin 1,1,0
